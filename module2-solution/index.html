@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Assignment Solution for Module 2</title>
+		<style>
+
+		/********** Base styles **********/
+		
+		* {box-sizing: border-box;
+						margin:0;}
+						
+		body{font-family: Arial, Helvetica, sans-serif;         
+			color: white;}
+			
+		h1 {margin-bottom: 15px;
+			font-size: 28px;
+			color: #686c8c;
+			text-align:center;
+			margin-top:120px;}                                      
+			
+		article{border:1px solid black;
+				background-color:#5F021F;
+				width: 90%;
+				height:150px;
+				position: relative;
+				margin-left: auto;
+				margin-right:auto;}
+			
+		h2 {color: black;
+			border: 1px solid black;
+			width: 50%;
+			position:relative;
+			float:right;
+			font-size: 20px;
+			text-align:center;}
+			
+		p{position: relative;
+		padding: 40px 10px 10px 10px}
+		
+		.col-lg-1 > article > h2{background-color:#debacb;}
+		.col-lg-2 > article > h2{background-color:#808080;
+								color: white;}
+		.col-lg-3 > article > h2{background-color:#f5f5dc}
+		
+		/* Responsive Design */
+		
+		.container {width: 100%;}             
+
+		/********** Large devices only **********/
+		
+		@media (min-width: 992px) {.col-lg-1, .col-lg-2, .col-lg-3 {float: left;
+																	border: 1px solid black;}
+									.col-lg-1 {width: 32.26%;}
+									.col-lg-2 {width: 32.26%;}
+									.col-lg-3 {width: 32.26%;}
+									}
+
+		/********** Medium devices only **********/
+
+		@media (min-width: 768px) and (max-width: 991px) {.col-md-1, .col-md-2, .col-md-3, {float:left;
+																							border: 1px solid black;}
+															.col-md-1 {width: 32.26%}
+															.col-md-2 {width: 66.13%}
+															.col-md-3 {width: 100%;}
+															}
+		/********** Small devices only **********/
+		
+		@media(max-width:767px){.col-sm-1, .col-sm-2, .col-sm-3 {float: left;
+																	border: 1px solid black;}
+								.col-md-1 {width: 32.26%}
+								.col-md-2 {width: 66.13%;}
+								.col-md-3 {width: 100%;}
+								}
+		
+
+
+		
+		</style>
+	</head>
+	<body>
+		<h1>Our Menu</h1>
+
+		<div class="container">
+			<div class="col-lg-1">
+				<article>
+					<h2>Spanakotiropita</h2>
+					<p>Spinach and fetta cheese mixed with a savoury egg custard and baked in filo dough. Served with buttons of carrot, turnip and fine green beans and spring of dill.</p>
+				</article>
+			</div>
+			<div class="col-lg-2">
+				<article>
+					<h2>Spanish Omelette</h2>
+					<p>Sliced sauteed onions and potatoes made into a thick flat omelette served with quartered grilled tomatoes and sauteed sliced red and green bell peppers.</p>
+				</article>
+			</div>
+			<div class="col-lg-3">
+				<article>
+					<h2>Fisherman's Catch</h2>
+					<p>Fish selection marinated in a combination of finely chopped onions, garlic, thyme, basil, lemon juice and oil, broiled and served with turned boiled parslied potatoes.</p>
+				</article>
+			</div>
+		
+		</div>
+
+	</body>
+</html>
