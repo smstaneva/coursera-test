@@ -7,8 +7,7 @@
 
 		/********** Base styles **********/
 		
-		* {box-sizing: border-box;
-						margin:0;}
+		* {box-sizing: border-box;}
 						
 		body{font-family: Arial, Helvetica, sans-serif;         
 			color: white;}
@@ -16,16 +15,14 @@
 		h1 {margin-bottom: 15px;
 			font-size: 28px;
 			color: #686c8c;
-			text-align:center;
-			margin-top:120px;}                                      
+			text-align:center;}                                      
 			
 		article{border:1px solid black;
 				background-color:#5F021F;
 				width: 90%;
 				height:150px;
-				position: relative;
-				margin-left: auto;
-				margin-right:auto;}
+				margin-right:auto;
+				margin-left: auto;}
 			
 		h2 {color: black;
 			border: 1px solid black;
@@ -33,15 +30,16 @@
 			position:relative;
 			float:right;
 			font-size: 20px;
-			text-align:center;}
+			text-align:center;
+			margin:0;}
 			
 		p{position: relative;
 		padding: 40px 10px 10px 10px}
 		
-		.col-lg-1 > article > h2{background-color:#debacb;}
-		.col-lg-2 > article > h2{background-color:#808080;
+		.first > h2{background-color:#debacb;}
+		.second > h2{background-color:#808080;
 								color: white;}
-		.col-lg-3 > article > h2{background-color:#f5f5dc}
+		.third > h2{background-color:#f5f5dc}
 		
 		/* Responsive Design */
 		
@@ -49,31 +47,59 @@
 
 		/********** Large devices only **********/
 		
-		@media (min-width: 992px) {.col-lg-1, .col-lg-2, .col-lg-3 {float: left;
-																	border: 1px solid black;}
-									.col-lg-1 {width: 32.26%;}
-									.col-lg-2 {width: 32.26%;}
-									.col-lg-3 {width: 32.26%;}
+		@media (min-width: 992px) {.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 
+										{float: left;
+										border: 1px solid black;}
+									.col-lg-1 {width: 8.33%;}
+									.col-lg-2 {width: 16.66%;}
+									.col-lg-3 {width: 25%;}
+									.col-lg-4 {width: 33.33%;}
+									.col-lg-5 {width: 41.66%;}
+									.col-lg-6 {width: 50%;}
+									.col-lg-7 {width: 58.33%;}
+									.col-lg-8 {width: 66.66%;}
+									.col-lg-9 {width: 74.99%;}
+									.col-lg-10 {width: 83.33%;}
+									.col-lg-11 {width: 91.66%;}
+									.col-lg-12 {width: 100%;}
 									}
 
 		/********** Medium devices only **********/
 
-		@media (min-width: 768px) and (max-width: 991px) {.col-md-1, .col-md-2, .col-md-3, {float:left;
-																							border: 1px solid black;}
-															.col-md-1 {width: 32.26%}
-															.col-md-2 {width: 66.13%}
-															.col-md-3 {width: 100%;}
+		@media (min-width: 768px) and (max-width: 991px) {.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 
+															{float: left;
+															border: 1px solid black;}
+															.col-md-1 {width: 8.33%;}
+															.col-md-2 {width: 16.66%;}
+															.col-md-3 {width: 25%;}
+															.col-md-4 {width: 33.33%;}
+															.col-md-5 {width: 41.66%;}
+															.col-md-6 {width: 50%;}
+															.col-md-7 {width: 58.33%;}
+															.col-md-8 {width: 66.66%;}
+															.col-md-9 {width: 74.99%;}
+															.col-md-10 {width: 83.33%;}
+															.col-md-11 {width: 91.66%;}
+															.col-md-12 {width: 100%;}
 															}
 		/********** Small devices only **********/
 		
-		@media(max-width:767px){.col-sm-1, .col-sm-2, .col-sm-3 {float: left;
-																	border: 1px solid black;}
-								.col-md-1 {width: 32.26%}
-								.col-md-2 {width: 66.13%;}
-								.col-md-3 {width: 100%;}
+		@media(max-width:767px {.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12
+								{float: left;
+								border: 1px solid black;}
+								.col-sm-1 {width: 8.33%;}
+								.col-sm-2 {width: 16.66%;}
+								.col-sm-3 {width: 25%;}
+								.col-sm-4 {width: 33.33%;}
+								.col-sm-5 {width: 41.66%;}
+								.col-sm-6 {width: 50%;}
+								.col-sm-7 {width: 58.33%;}
+								.col-sm-8 {width: 66.66%;}
+								.col-sm-9 {width: 74.99%;}
+								.col-sm-10 {width: 83.33%;}
+								.col-sm-11 {width: 91.66%;}
+								.col-sm-12 {width: 100%;}
 								}
-		
-
 
 		
 		</style>
@@ -82,20 +108,20 @@
 		<h1>Our Menu</h1>
 
 		<div class="container">
-			<div class="col-lg-1">
-				<article>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<article class="first">
 					<h2>Spanakotiropita</h2>
 					<p>Spinach and fetta cheese mixed with a savoury egg custard and baked in filo dough. Served with buttons of carrot, turnip and fine green beans and spring of dill.</p>
 				</article>
 			</div>
-			<div class="col-lg-2">
-				<article>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<article class="second">
 					<h2>Spanish Omelette</h2>
 					<p>Sliced sauteed onions and potatoes made into a thick flat omelette served with quartered grilled tomatoes and sauteed sliced red and green bell peppers.</p>
 				</article>
 			</div>
-			<div class="col-lg-3">
-				<article>
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<article class="third">
 					<h2>Fisherman's Catch</h2>
 					<p>Fish selection marinated in a combination of finely chopped onions, garlic, thyme, basil, lemon juice and oil, broiled and served with turned boiled parslied potatoes.</p>
 				</article>
