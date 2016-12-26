@@ -117,11 +117,11 @@ global.$dc = dc;
 
 /*******DYNAMICALLY LOAD SINGLE CATEGORY VIEW*******/
 function buildAndShowMenuItemsHTML (categoryMenuItems) {
-  // Load title snippet of menu items page
+  
   $ajaxUtils.sendGetRequest(
     menuItemsTitleHtml,
     function (menuItemsTitleHtml) {
-      // Retrieve single menu item snippet
+      
       $ajaxUtils.sendGetRequest(
         menuItemHtml,
         function (menuItemHtml) {
@@ -137,8 +137,7 @@ function buildAndShowMenuItemsHTML (categoryMenuItems) {
 }
 
 
-// Using category and menu items data and snippets html
-// build menu items view HTML to be inserted into page
+
 function buildMenuItemsViewHtml(categoryMenuItems,
                                 menuItemsTitleHtml,
                                 menuItemHtml) {
@@ -155,11 +154,11 @@ function buildMenuItemsViewHtml(categoryMenuItems,
   var finalHtml = menuItemsTitleHtml;
   finalHtml += "<section class='row'>";
 
-  // Loop over menu items
+
   var menuItems = categoryMenuItems.menu_items;
   var catShortName = categoryMenuItems.category.short_name;
   for (var i = 0; i < menuItems.length; i++) {
-    // Insert menu item values
+   
     var html = menuItemHtml;
     html =
       insertProperty(html, "short_name", menuItems[i].short_name);
@@ -192,7 +191,7 @@ function buildMenuItemsViewHtml(categoryMenuItems,
                      "description",
                      menuItems[i].description);
 
-    // Add clearfix after every second menu item
+  
     if (i % 2 != 0) {
       html +=
         "<div class='clearfix visible-lg-block visible-md-block'></div>";
@@ -206,11 +205,11 @@ function buildMenuItemsViewHtml(categoryMenuItems,
 }
 
 
-// Appends price with '$' if price exists
+
 function insertItemPrice(html,
                          pricePropName,
                          priceValue) {
-  // If not specified, replace with empty string
+ 
   if (!priceValue) {
     return insertProperty(html, pricePropName, "");;
   }
@@ -221,11 +220,11 @@ function insertItemPrice(html,
 }
 
 
-// Appends portion name in parens if it exists
+
 function insertItemPortionName(html,
                                portionPropName,
                                portionValue) {
-  // If not specified, return original string
+
   if (!portionValue) {
     return insertProperty(html, portionPropName, "");
   }
@@ -244,7 +243,7 @@ global.$dc = dc;
 	
 	
 	
-}
+
 	
 	
 
