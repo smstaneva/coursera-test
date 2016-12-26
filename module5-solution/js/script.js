@@ -1,4 +1,4 @@
-
+/*******DYNAMICALLY LOAD HOME VIEW CONTENT*******/
 (function (global){
 	var dc = {};
 	var homeHtml = "snippets/home-snippet.html";
@@ -26,7 +26,7 @@
 global.$dc = dc;
 })(window);
 
-
+/******DYNAMICALLY LOAD MENU CATEGORIES VIEW*******/
 (function (global){
 	var dc ={};
 	var homeHtml = "snippets/home-snippet.html";
@@ -114,6 +114,140 @@ global.$dc = dc;
 		
 global.$dc = dc;
 })(window);	
+
+/*******DYNAMICALLY LOAD SINGLE CATEGORY VIEW*******/
+function buildAndShowMenuItemsHTML (categoryMenuItems) {
+  // Load title snippet of menu items page
+  $ajaxUtils.sendGetRequest(
+    menuItemsTitleHtml,
+    function (menuItemsTitleHtml) {
+      // Retrieve single menu item snippet
+      $ajaxUtils.sendGetRequest(
+        menuItemHtml,
+        function (menuItemHtml) {
+          var menuItemsViewHtml =
+            buildMenuItemsViewHtml(categoryMenuItems,
+                                   menuItemsTitleHtml,
+                                   menuItemHtml);
+          insertHtml("#main-content", menuItemsViewHtml);
+        },
+        false);
+    },
+    false);
+}
+
+
+// Using category and menu items data and snippets html
+// build menu items view HTML to be inserted into page
+function buildMenuItemsViewHtml(categoryMenuItems,
+                                menuItemsTitleHtml,
+                                menuItemHtml) {
+
+  menuItemsTitleHtml =
+    insertProperty(menuItemsTitleHtml,
+                   "name",
+                   categoryMenuItems.category.name);
+  menuItemsTitleHtml =
+    insertProperty(menuItemsTitleHtml,
+                   "special_instructions",
+                   categoryMenuItems.category.special_instructions);
+
+  var finalHtml = menuItemsTitleHtml;
+  finalHtml += "<section class='row'>";
+
+  // Loop over menu items
+  var menuItems = categoryMenuItems.menu_items;
+  var catShortName = categoryMenuItems.category.short_name;
+  for (var i = 0; i < menuItems.length; i++) {
+    // Insert menu item values
+    var html = menuItemHtml;
+    html =
+      insertProperty(html, "short_name", menuItems[i].short_name);
+    html =
+      insertProperty(html,
+                     "catShortName",
+                     catShortName);
+    html =
+      insertItemPrice(html,
+                      "price_small",
+                      menuItems[i].price_small);
+    html =
+      insertItemPortionName(html,
+                            "small_portion_name",
+                            menuItems[i].small_portion_name);
+    html =
+      insertItemPrice(html,
+                      "price_large",
+                      menuItems[i].price_large);
+    html =
+      insertItemPortionName(html,
+                            "large_portion_name",
+                            menuItems[i].large_portion_name);
+    html =
+      insertProperty(html,
+                     "name",
+                     menuItems[i].name);
+    html =
+      insertProperty(html,
+                     "description",
+                     menuItems[i].description);
+
+    // Add clearfix after every second menu item
+    if (i % 2 != 0) {
+      html +=
+        "<div class='clearfix visible-lg-block visible-md-block'></div>";
+    }
+
+    finalHtml += html;
+  }
+
+  finalHtml += "</section>";
+  return finalHtml;
+}
+
+
+// Appends price with '$' if price exists
+function insertItemPrice(html,
+                         pricePropName,
+                         priceValue) {
+  // If not specified, replace with empty string
+  if (!priceValue) {
+    return insertProperty(html, pricePropName, "");;
+  }
+
+  priceValue = "$" + priceValue.toFixed(2);
+  html = insertProperty(html, pricePropName, priceValue);
+  return html;
+}
+
+
+// Appends portion name in parens if it exists
+function insertItemPortionName(html,
+                               portionPropName,
+                               portionValue) {
+  // If not specified, return original string
+  if (!portionValue) {
+    return insertProperty(html, portionPropName, "");
+  }
+
+  portionValue = "(" + portionValue + ")";
+  html = insertProperty(html, portionPropName, portionValue);
+  return html;
+}
+
+
+global.$dc = dc;
+
+})(window);
+
+	
+	
+	
+	
+}
+	
+	
+
 		
 
 		
