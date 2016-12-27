@@ -1,36 +1,38 @@
+/*******DYNAMICALLY LOAD HOME VIEW CONTENT*******/
 (function (global){
+	
 	var dc = {};
 	var homeHtml = "snippets/home-snippet.html";
+	
 	var insertHtml = function (selector, html){
-		var targetElem = document.querySelector(selector);
+	var targetElem = document.querySelector(selector);
 		targetElem.innerHTML = html;
-	};
+		};
 	
 	var showLoading = function(selector){
-		var html = "<div class='text-center'>";
+	var html = "<div class='text-center'>";
 		html += "<img src='images/ajax-loader.gif'></div>";
 		insertHtml(selector, html);
-	};
+		};
 	
 	document.addEventListener("DOMContentLoaded", function (event){
-		showLoading("#main-content");
-		$ajaxUtils.sendGetRequest(
-		homeHtml,
-		function (responseText){
-			document.querySelector("#main-content")
-				.innerHTML = responseText;	
+	showLoading("#main-content");
+		$ajaxUtils.sendGetRequest(homeHtml, function (responseText){
+		document.querySelector("#main-content")
+				.innerHTML = responseText;
 		},
-		false);		
+	false);
 	});
+	
 global.$dc = dc;
 })(window);
 
-
+/******DYNAMICALLY LOAD MENU CATEGORIES VIEW*******/
 (function (global){
+	
 	var dc ={};
 	var homeHtml = "snippets/home-snippet.html";
-	var allCategoriesUrl =
-	"https://davids-restaurant.herokuapp.com/categories.json";
+	var allCategoriesUrl = "https://davids-restaurant.herokuapp.com/categories.json";
 	var categoriesTitleHtml = "snippets/categories-title-snippet.html";
 	var categoryHtml = "snippets/category-snippet.html";
 	
@@ -50,39 +52,25 @@ global.$dc = dc;
 		.replace(new RegExp(propToReplace, "g"), propValue);
 		return string;	
 	}
-		
-	
 	
 	document.addEventListener("DOMContentLoaded", function (event){
 		showLoading("#main-content");
-		$ajaxUtils.sendGetRequest(
-		homeHtml,
-		function (responseText){
-			document.querySelector("#main-content")
+		$ajaxUtils.sendGetRequest(homeHtml,function (responseText){
+		document.querySelector("#main-content")
 				.innerHTML = responseText;	
 		},
 		false);		
 	});
 		
-	
 	dc.loadMenuCategories = function(){
-		showLoading("#main-content");
-		$ajaxUtils.sendGetRequest(
-		allCategoriesUrl,
-		buildAndShowCategoriesHTML);
+	showLoading("#main-content");
+	$ajaxUtils.sendGetRequest(allCategoriesUrl, buildAndShowCategoriesHTML);
 	};
 	
 	function buildAndShowCategoriesHTML (categories){
-		$ajaxUtils.sendGetRequest(
-		categoriesTitleHtml,
-		function(categoriesTitleHtml){
-		$ajaxUtils.sendGetRequest(
-		categoryHtml,
-		function(categoryHtml){
-			var categoriesViewHtml = 
-			buildCategoriesViewHtml(categories,
-									categoriesTitleHtml,
-									categoryHtml);
+		$ajaxUtils.sendGetRequest(categoriesTitleHtml, function(categoriesTitleHtml){
+		$ajaxUtils.sendGetRequest(categoryHtml, function(categoryHtml){
+			var categoriesViewHtml = buildCategoriesViewHtml(categories,categoriesTitleHtml,categoryHtml);
 		insertHtml("#main-content", categoriesViewHtml);
 		},
 		false);
@@ -90,9 +78,7 @@ global.$dc = dc;
 		false);
 	}
 	
-	function buildCategoriesViewHtml(categories,
-									categoriesTitleHtml,
-									categoryHtml){
+	function buildCategoriesViewHtml(categories, categoriesTitleHtml, categoryHtml){
 		var finalHtml = categoriesTitleHtml;
 		finalHtml += "<section class='row'>";
 		
@@ -113,3 +99,25 @@ global.$dc = dc;
 		
 global.$dc = dc;
 })(window);	
+
+
+	
+	
+	
+	
+
+	
+	
+
+		
+
+		
+		
+	
+	
+	
+	
+	
+	
+
+
