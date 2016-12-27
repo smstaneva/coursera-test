@@ -1,4 +1,3 @@
-
 $(function () { // Same as document.addEventListener("DOMContentLoaded"...
 
   // Same as document.querySelector("#navbarToggle").addEventListener("blur",...
@@ -99,6 +98,8 @@ function buildAndShowHomeHTML (categories) {
     homeHtmlUrl,
     function (homeHtml) {
 
+      function (homeHtml) {
+
       var randomCategory = chooseRandomCategory(categories,
                                                  homeHtml);
       var randomCategoryShortName = randomCategory.short_name;
@@ -107,62 +108,15 @@ function buildAndShowHomeHTML (categories) {
        console.log (chosenCategoryShortName);
        console.log (randomCategory);
 
-       // var homeViewHtml =
-       //  buildHomeViewHtml (categories,
-       //                      homeHtml,
-       //                      chosenCategoryShortName);
-
-       insertHtml("#main-content", homeHtml);
+	  insertHtml("#main-content", homeHtml);
 
 
 
         insertProperty(homeHtml, 
                     "randomCategoryShortName", 
-                    chosenCategoryShortName);  
+                    chosenCategoryShortName);
 
-},
-false); //False here because we are getting just regular HTML from the server, so no need to process JSON.
-}
-
-//Given array of category objects, returns a random category object.
-function chooseRandomCategory (categories) {
-  // Choose a random index into the array (from 0 inclusively until array length (exclusively))
-  var randomArrayIndex = Math.floor(Math.random() * categories.length);
-
-  // return category object with that randomArrayIndex
-
-  return categories[randomArrayIndex];
-
-}
-
-
-  // Using home data and snippets html
-  // build home view HTML to be inserted into page
-  // function buildHomeViewHtml (categories,
-  //                           homeHtml,
-  //                           chosenCategoryShortName) {
-
-  //   var finalHtml = chosenCategoryShortName;
-  //   finalHtml += "<section class='row'>";
-
-  //   // Loop over categories
-  //   for (var i = 0; i < categories.length; i++) {
-  //     // Insert home values
-  //     var html = homeHtml;
-  //     var name = "" + categories[i].name;
-  //     var short_name = categories[i].short_name;
-      // html =
-      //   insertProperty(homeHtml, 
-      //               "randomCategoryShortName", 
-      //               chosenCategoryShortName);
-  //     finalHtml +=   html;
-  //   }
-  //     finalHtml += "</section>";
-  //     return finalHtml;
-  // }
-
-
-      // TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
+					// TODO: STEP 2: Here, call chooseRandomCategory, passing it retrieved 'categories'
       // Pay attention to what type of data that function returns vs what the chosenCategoryShortName
       // variable's name implies it expects.
       // var chosenCategoryShortName = ....
@@ -186,6 +140,20 @@ function chooseRandomCategory (categories) {
       // Use the existing insertHtml function for that purpose. Look through this code for an example
       // of how to do that.
       // ....
+
+    },
+    false); // False here because we are getting just regular HTML from the server, so no need to process JSON.
+}
+
+
+// Given array of category objects, returns a random category object.
+function chooseRandomCategory (categories) {
+  // Choose a random index into the array (from 0 inclusively until array length (exclusively))
+  var randomArrayIndex = Math.floor(Math.random() * categories.length);
+
+  // return category object with that randomArrayIndex
+  return categories[randomArrayIndex];
+}
 
 
 // Load the menu categories view
