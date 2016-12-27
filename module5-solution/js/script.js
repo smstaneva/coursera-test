@@ -29,18 +29,7 @@ var insertProperty = function (string, propName, propValue) {
 	return string;
 };
 
-/*******CHANGE ACTIVE BUTTON STYLE*****/
-var switchMenuToActive = function () {
-	var classes = document.querySelector("#navHomeButton").className;
-	classes = classes.replace(new RegExp("active", "g"), "");
-	document.querySelector("#navHomeButton").className = classes;
 
-	classes = document.querySelector("#navMenuButton").className;
-	if (classes.indexOf("active") === -1) {
-		classes += " active";
-		document.querySelector("#navMenuButton").className = classes;
-  }
-};
 
 /*******STEP 1 -4*******/
 document.addEventListener("DOMContentLoaded", function (event) {
